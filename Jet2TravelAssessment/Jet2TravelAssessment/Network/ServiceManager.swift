@@ -13,7 +13,7 @@ class ServiceManager {
     static let shared: ServiceManager = ServiceManager()
     private init() { }
     
-    func getArticles(handler: @escaping([Article]?, Error?) -> ())  {
+    func getArticles(handler: @escaping([ArticleModel]?, Error?) -> ())  {
         guard let url = URL(string: urlString) else { return  }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
@@ -25,7 +25,7 @@ class ServiceManager {
             }
             if let _data = data {
                 do {
-                    let response = try JSONDecoder().decode([Article].self, from: _data)
+                    let response = try JSONDecoder().decode([ArticleModel].self, from: _data)
                     DispatchQueue.main.async {
                         handler(response, nil)
                     }

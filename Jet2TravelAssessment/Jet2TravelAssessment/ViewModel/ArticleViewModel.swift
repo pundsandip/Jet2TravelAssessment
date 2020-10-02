@@ -9,7 +9,7 @@
 import Foundation
 class ArticleViewModel {
     
-    var article: Article!
+    var article: ArticleModel!
     
     var fullName: String? {
         guard let user = article.user.first else {
@@ -83,7 +83,7 @@ class ArticleViewModel {
         return nil
     }
     
-    init(_ model: Article) {
+    init(_ model: ArticleModel) {
         article = model
     }
     

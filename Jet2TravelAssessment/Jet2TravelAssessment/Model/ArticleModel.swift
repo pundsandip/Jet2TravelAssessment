@@ -8,16 +8,16 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Article: Codable {
+// MARK: - ArticleModel
+struct ArticleModel: Codable {
     let id, createdAt, content: String
     let comments, likes: Int
-    let media: [Media]
-    let user: [User]
+    let media: [MediaModel]
+    let user: [UserModel]
 }
 
-// MARK: - Media
-struct Media: Codable {
+// MARK: - MediaModel
+struct MediaModel: Codable {
     let id, blogID, createdAt: String
     let image: String
     let title: String
@@ -30,8 +30,8 @@ struct Media: Codable {
     }
 }
 
-// MARK: - User
-struct User: Codable {
+// MARK: - UserModel
+struct UserModel: Codable {
     let id, blogID, createdAt, name: String
     let avatar: String
     let lastname, city, designation, about: String
