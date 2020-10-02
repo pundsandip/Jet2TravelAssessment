@@ -47,11 +47,11 @@ class DBManager {
     }
     
     // fetch data from persitance store
-    func fetchArticlesFromDB(fetchOffSet: Int) -> [ArticleModel] {
+    func fetchArticlesFromDB(entityName: String, fetchOffSet: Int) -> [ArticleModel] {
         var articles: [ArticleModel] = []
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Article")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         request.fetchLimit = 10
         request.fetchOffset = fetchOffSet
         do {
@@ -80,6 +80,18 @@ class DBManager {
             print("Failed")
         }
         return articles
+    }
+    
+    func getRecordsCount(entityName: String) -> Int {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        do {
+            return try context.count(for: fetchRequest)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return 0
     }
     
     // clear all entities

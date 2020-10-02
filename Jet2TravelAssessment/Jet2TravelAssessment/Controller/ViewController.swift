@@ -41,12 +41,13 @@ class ViewController: UIViewController {
             fetchArticlesData()
         } else {
             print("Internet Not Connection Available!")
+            self.total = DBManager.shared.getRecordsCount(entityName: "Article")
             fetchDataFromDBAndUpdateUI()
         }
     }
     
     private func fetchDataFromDBAndUpdateUI() {
-        let result = DBManager.shared.fetchArticlesFromDB(fetchOffSet: self.fetchOffSet)
+        let result = DBManager.shared.fetchArticlesFromDB(entityName: "Article", fetchOffSet: fetchOffSet)
         self.isShowError(value: false)
         self.reloadData(result)
     }
@@ -131,7 +132,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if maximumOffset - currentOffset <= 50.0 {
             if  arrArticle.count < total {
                 fetchOffSet = fetchOffSet + 10
-                let result = DBManager.shared.fetchArticlesFromDB(fetchOffSet: fetchOffSet)
+                let result = DBManager.shared.fetchArticlesFromDB(entityName: "Article", fetchOffSet: fetchOffSet)
                 reloadData(result)
             }
         }
