@@ -41,7 +41,11 @@ class ArticleViewModel {
     }
     
     var articleImageURL: String? {
-        return article.media.first?.image
+        guard let media = article.media.first else { return nil }
+        if media.image.isEmpty {
+            return nil
+        }
+        return media.image
     }
     
     var articleContent: String {

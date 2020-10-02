@@ -12,24 +12,52 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblError: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var arrArticle: [ArticleViewModel] = []
+    var fetchOffSet: Int = 0
+    var total: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 200
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.register(UINib.init(nibName: "ArticleCell", bundle: Bundle.main), forCellReuseIdentifier: ArticleCell.identifier)
+        checkInternetConnection()
+    }
+    
+    private func fetchArticlesData() {
         ServiceManager.shared.getArticles { [weak self] response, error in
             guard let articles = response else {
                 self?.isShowError(value: true)
                 return
             }
-            self?.isShowError(value: false)
-            for article in articles {
-                let viewModel = ArticleViewModel(article)
-                self?.arrArticle.append(viewModel)
-            }
-            self?.tableView.reloadData()
+            self?.total = articles.count
+            DBManager.shared.saveArticlesToDB(articles: articles)
+            self?.fetchDataFromDBAndUpdateUI()
         }
+    }
+    
+    func checkInternetConnection() {
+        if Reachability.isConnectedToNetwork() {
+            print("Internet Connection Available!")
+            fetchArticlesData()
+        } else {
+            print("Internet Not Connection Available!")
+            fetchDataFromDBAndUpdateUI()
+        }
+    }
+    
+    private func fetchDataFromDBAndUpdateUI() {
+        let result = DBManager.shared.fetchArticlesFromDB(fetchOffSet: self.fetchOffSet)
+        self.isShowError(value: false)
+        self.reloadData(result)
+    }
+    
+    
+    private func reloadData(_ data: [ArticleModel]) {
+        for article in data {
+            let viewModel = ArticleViewModel(article)
+            self.arrArticle.append(viewModel)
+        }
+        self.tableView.reloadData()
     }
     
     private func isShowError(value: Bool) {
@@ -92,6 +120,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let articleViewModel = self.arrArticle[indexPath.row]
         cell.setData(viewModel: articleViewModel)
         return cell
+    }
+    
+    // load more content
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // UITableView only moves in one direction, y axis
+        let currentOffset: CGFloat = scrollView.contentOffset.y
+        let maximumOffset: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
+        // Change 50.0 to adjust the distance from bottom
+        if maximumOffset - currentOffset <= 50.0 {
+            if  arrArticle.count < total {
+                fetchOffSet = fetchOffSet + 10
+                let result = DBManager.shared.fetchArticlesFromDB(fetchOffSet: fetchOffSet)
+                reloadData(result)
+            }
+        }
     }
 }
 

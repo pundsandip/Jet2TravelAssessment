@@ -15,6 +15,7 @@
 		3742AA002523789C004E68A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3742A9FE2523789C004E68A0 /* LaunchScreen.storyboard */; };
 		3742AA0B2523789C004E68A0 /* Jet2TravelAssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742AA0A2523789C004E68A0 /* Jet2TravelAssessmentTests.swift */; };
 		3742AA162523789C004E68A0 /* Jet2TravelAssessmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742AA152523789C004E68A0 /* Jet2TravelAssessmentUITests.swift */; };
+		3754711225276A84005D6CD3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3754711125276A84005D6CD3 /* Reachability.swift */; };
 		376E2EC52524E53000A5827D /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E2EC42524E53000A5827D /* ArticleModel.swift */; };
 		376E2ECB2525EA8400A5827D /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E2EC92525EA8400A5827D /* ArticleCell.swift */; };
 		376E2ECC2525EA8400A5827D /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 376E2ECA2525EA8400A5827D /* ArticleCell.xib */; };
@@ -23,6 +24,7 @@
 		376E2ED525270D9C00A5827D /* ImageDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E2ED225270D9C00A5827D /* ImageDownloadManager.swift */; };
 		376E2ED625270D9C00A5827D /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E2ED325270D9C00A5827D /* ServiceManager.swift */; };
 		376E2ED725270D9C00A5827D /* Jet2TechOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E2ED425270D9C00A5827D /* Jet2TechOperation.swift */; };
+		376E2EDB25273A7700A5827D /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E2EDA25273A7700A5827D /* DBManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 		3742AA112523789C004E68A0 /* Jet2TravelAssessmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Jet2TravelAssessmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3742AA152523789C004E68A0 /* Jet2TravelAssessmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jet2TravelAssessmentUITests.swift; sourceTree = "<group>"; };
 		3742AA172523789C004E68A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3754711125276A84005D6CD3 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		376E2EC42524E53000A5827D /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		376E2EC92525EA8400A5827D /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		376E2ECA2525EA8400A5827D /* ArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 		376E2ED225270D9C00A5827D /* ImageDownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadManager.swift; sourceTree = "<group>"; };
 		376E2ED325270D9C00A5827D /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		376E2ED425270D9C00A5827D /* Jet2TechOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jet2TechOperation.swift; sourceTree = "<group>"; };
+		376E2EDA25273A7700A5827D /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		3742A9F125237893004E68A0 /* Jet2TravelAssessment */ = {
 			isa = PBXGroup;
 			children = (
+				3754711325276C9E005D6CD3 /* Other */,
 				376E2ED125270D9C00A5827D /* Network */,
 				376E2EC62525E95700A5827D /* Controller */,
 				376E2EC72525E95700A5827D /* View */,
@@ -126,7 +131,6 @@
 				3742A9FE2523789C004E68A0 /* LaunchScreen.storyboard */,
 				3742AA012523789C004E68A0 /* Info.plist */,
 				3742A9F925237893004E68A0 /* Jet2TravelAssessment.xcdatamodeld */,
-				376E2ECF2526E68000A5827D /* IntExtension.swift */,
 			);
 			path = Jet2TravelAssessment;
 			sourceTree = "<group>";
@@ -147,6 +151,15 @@
 				3742AA172523789C004E68A0 /* Info.plist */,
 			);
 			path = Jet2TravelAssessmentUITests;
+			sourceTree = "<group>";
+		};
+		3754711325276C9E005D6CD3 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				376E2EDA25273A7700A5827D /* DBManager.swift */,
+				376E2ECF2526E68000A5827D /* IntExtension.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		376E2EC32524E51F00A5827D /* Model */ = {
@@ -185,6 +198,7 @@
 		376E2ED125270D9C00A5827D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				3754711125276A84005D6CD3 /* Reachability.swift */,
 				376E2ED225270D9C00A5827D /* ImageDownloadManager.swift */,
 				376E2ED325270D9C00A5827D /* ServiceManager.swift */,
 				376E2ED425270D9C00A5827D /* Jet2TechOperation.swift */,
@@ -326,6 +340,7 @@
 			files = (
 				376E2ED725270D9C00A5827D /* Jet2TechOperation.swift in Sources */,
 				3742A9FB25237893004E68A0 /* Jet2TravelAssessment.xcdatamodeld in Sources */,
+				3754711225276A84005D6CD3 /* Reachability.swift in Sources */,
 				3742A9F525237893004E68A0 /* ViewController.swift in Sources */,
 				376E2ECB2525EA8400A5827D /* ArticleCell.swift in Sources */,
 				3742A9F325237893004E68A0 /* AppDelegate.swift in Sources */,
@@ -334,6 +349,7 @@
 				376E2ECE25260D3400A5827D /* ArticleViewModel.swift in Sources */,
 				376E2EC52524E53000A5827D /* ArticleModel.swift in Sources */,
 				376E2ED625270D9C00A5827D /* ServiceManager.swift in Sources */,
+				376E2EDB25273A7700A5827D /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
