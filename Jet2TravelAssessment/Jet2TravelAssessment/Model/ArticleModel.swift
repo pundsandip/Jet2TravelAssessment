@@ -11,34 +11,26 @@ import Foundation
 // MARK: - ArticleModel
 struct ArticleModel: Codable {
     let id, createdAt, content: String
-    let comments, likes: Int
+    let comments, likes: Int64
     let media: [MediaModel]
     let user: [UserModel]
 }
 
 // MARK: - MediaModel
 struct MediaModel: Codable {
-    let id, blogID, createdAt: String
     let image: String
     let title: String
     let url: String
     
     enum CodingKeys: String, CodingKey {
-        case id
-        case blogID = "blogId"
-        case createdAt, image, title, url
+        case image, title, url
     }
 }
 
 // MARK: - UserModel
 struct UserModel: Codable {
-    let id, blogID, createdAt, name: String
-    let avatar: String
-    let lastname, city, designation, about: String
-    
+    let name, avatar, lastname, designation: String
     enum CodingKeys: String, CodingKey {
-        case id
-        case blogID = "blogId"
-        case createdAt, name, avatar, lastname, city, designation, about
+        case name, avatar, lastname, designation
     }
 }
